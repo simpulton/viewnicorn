@@ -2,7 +2,7 @@
     <button type="button" class="close" ng-click="removeUnicornSite(id)">&times;</button>
     <input class="large" type="text" ng-model="unicornSite.name" ng-blur="updateUnicornSite(id)"/>
     <p class="medium">{{unicornSite.status}} Unicorns</p>
-    <input class="balSlider" ng-model="unicornSite.status" kendo-slider k-min="0" k-max="100" k-on-change="updateUnicornSite(id)"/>
+    <input class="balSlider" k-ng-model="unicornSite.status" kendo-slider k-min="0" k-max="100" k-on-change="updateUnicornSite(id)"/>
 </div>
 
 <hr/>
