@@ -153,3 +153,13 @@ a.view:hover, a.view:focus {
 }
 
 .k-slider-horizontal { width: 100% }
+
+.btn-success {
+    color: #fff;
+    background-color: #F0788C !important;
+    border-color: #F0788C !important;
+}
+
+.progress-bar-success {
+    background-color: #F0788C !important;
+}

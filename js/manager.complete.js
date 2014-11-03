@@ -1,11 +1,11 @@
-var app = angular.module('falafelManager', [
+var app = angular.module('unicornSiteManager', [
     'ngRoute',
     'ui.bootstrap',
     'kendo.directives',
     'firebase'
 ]);
 
-app.constant('FIREBASE_URI', 'PUT_YOUR_FIREBASE_ENDPOINT_HERE');
+app.constant('FIREBASE_URI', 'PUT YOUR FIREBASE ENDPOINT HERE');
 
 app.config(function ($routeProvider) {
     $routeProvider.
@@ -25,64 +25,64 @@ app.config(function ($routeProvider) {
 // DEMO: Realtime
 //-------------------------------------------------------------------------------------------------
 
-app.controller('DashboardCtrl', function ($scope, FalafelKioskService) {
-    $scope.falafelKiosks = FalafelKioskService.getFalafelKiosks();
+app.controller('DashboardCtrl', function ($scope, UnicornSiteService) {
+    $scope.unicornSites = UnicornSiteService.getUnicornSites();
 });
 
-app.controller('ManagerCtrl', function ($scope, FalafelKioskService) {
-    $scope.currentFalafelKiosk = null;
-    $scope.newFalafelKiosk = { name: '', status: '' };
-    $scope.falafelKiosks = FalafelKioskService.getFalafelKiosks();
+app.controller('ManagerCtrl', function ($scope, UnicornSiteService) {
+    $scope.currentUnicornSite = null;
+    $scope.newUnicornSite = { name: '', status: '' };
+    $scope.unicornSites = UnicornSiteService.getUnicornSites();
 
-    $scope.setCurrentFalafelKiosk = function (id, falafelKiosk) {
-        falafelKiosk.id = id;
-        $scope.currentFalafelKiosk = falafelKiosk ;
+    $scope.setCurrentUnicornSite = function (id, unicornSite) {
+        unicornSite.id = id;
+        $scope.currentUnicornSite = unicornSite ;
     };
     
-    $scope.addFalafelKiosk = function () {
-        FalafelKioskService.addFalafelKiosk(angular.copy($scope.newFalafelKiosk));
+    $scope.addUnicornSite = function () {
+        UnicornSiteService.addUnicornSite(angular.copy($scope.newUnicornSite));
         $scope.resetForm();
     };
 
-    $scope.updateFalafelKiosk = function (id) {
-        FalafelKioskService.updateFalafelKiosk(id);
+    $scope.updateUnicornSite = function (id) {
+        UnicornSiteService.updateUnicornSite(id);
     };
 
-    $scope.removeFalafelKiosk = function (id) {
-        FalafelKioskService.removeFalafelKiosk(id);
+    $scope.removeUnicornSite = function (id) {
+        UnicornSiteService.removeUnicornSite(id);
     };
 
     $scope.resetForm = function () {
-        $scope.currentFalafelKiosk = null;
-        $scope.newFalafelKiosk = { name: '', status: '' };
+        $scope.currentUnicornSite = null;
+        $scope.newUnicornSite = { name: '', status: '' };
     };
 });
 
-app.factory('FalafelKioskService', function ($firebase, FIREBASE_URI) {
-    var ref = new Firebase(FIREBASE_URI + 'kiosks');
-    var falafelKiosks = $firebase(ref).$asArray();
+app.factory('UnicornSiteService', function ($firebase, FIREBASE_URI) {
+    var ref = new Firebase(FIREBASE_URI + 'sites');
+    var unicornSites = $firebase(ref).$asArray();
 
-    var getFalafelKiosks = function () {
-        return falafelKiosks;
+    var getUnicornSites = function () {
+        return unicornSites;
     };
 
-    var addFalafelKiosk = function (kiosk) {
-        falafelKiosks.$add(kiosk)
+    var addUnicornSite = function (unicorn) {
+        unicornSites.$add(unicorn);
     };
 
-    var updateFalafelKiosk = function (id) {
-        falafelKiosks.$save(id);
+    var updateUnicornSite = function (id) {
+        unicornSites.$save(id);
     };
 
-    var removeFalafelKiosk = function (id) {
-        falafelKiosks.$remove(id);
+    var removeUnicornSite = function (id) {
+        unicornSites.$remove(id);
     };
 
     return {
-        getFalafelKiosks: getFalafelKiosks,
-        addFalafelKiosk: addFalafelKiosk,
-        updateFalafelKiosk: updateFalafelKiosk,
-        removeFalafelKiosk: removeFalafelKiosk
+        getUnicornSites: getUnicornSites,
+        addUnicornSite: addUnicornSite,
+        updateUnicornSite: updateUnicornSite,
+        removeUnicornSite: removeUnicornSite
     }
 });
 
