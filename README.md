@@ -1,4 +1,4 @@
-Realtime Falafel Manager
+Viewnicorn
 ===============
 
-A realtime falafel kiosk manager build with AngularJS and Firebase.
+A realtime unicorn sighting tracker built with AngularJS and Firebase.
